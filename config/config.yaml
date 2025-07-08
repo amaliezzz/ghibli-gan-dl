@@ -1,0 +1,14 @@
+wandb:
+  project: ghibli-gan
+  data:
+    artifact_name: ghibli-image-dataset
+    artifact_type: dataset
+    job_type: upload-dataset
+
+scraper:
+  query: ghibli anime character
+  num_images: 1000
+  output_dir: data
+
+logging:
+  level: INFO
