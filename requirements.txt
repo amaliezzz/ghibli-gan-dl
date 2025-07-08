@@ -13,3 +13,4 @@ gdown
 wandb
 requests
 selenium
+PyYaml
