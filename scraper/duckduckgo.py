@@ -7,6 +7,7 @@ import yaml
 
 from PIL import Image
 from io import BytesIO
+from tqdm import tqdm
 
 def load_config():
     with open("config/config.yaml", "r") as f:
@@ -86,8 +87,10 @@ class DuckDuckGoImageScraper:
         return image_urls
 
     def save_images(self, urls):
-        count = 0
-        for i, url in enumerate(urls):
+        self.logger.info("Starting image download...")
+        success_count = 0
+
+        for i, url in enumerate(tqdm(urls, desc="Downloading images", unit="img")):
             try:
                 resp = requests.get(url, headers=self.headers, timeout=10)
                 resp.raise_for_status()
@@ -95,16 +98,17 @@ class DuckDuckGoImageScraper:
                 img = img.resize((512, 512))
                 path = os.path.join(self.output_dir, f"ghibli_{i:04}.jpg")
                 img.save(path)
-                count += 1
-                self.logger.info(f"[{count}] Saved image: {url}")
+                success_count += 1
             except Exception as e:
                 self.logger.warning(f"Failed to save image {url}: {e}")
-        self.logger.info(f"Downloaded {count} images to '{self.output_dir}'")
+
+        self.logger.info(f"Downloaded {success_count} images to '{self.output_dir}'")
 
     def scrape(self):
         urls = self.fetch_image_urls()
         if urls:
             self.save_images(urls)
+
 
 if __name__ == "__main__":
     config = load_config()
