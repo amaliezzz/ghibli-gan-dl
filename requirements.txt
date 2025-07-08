@@ -13,4 +13,3 @@ gdown
 wandb
 requests
 selenium
-yaml
