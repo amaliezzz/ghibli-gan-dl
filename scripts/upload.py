@@ -1,6 +1,10 @@
 import os
 import wandb
-from utils.common import load_config
+import yaml
+
+def load_config():
+    with open("config/config.yaml", "r") as f:
+        return yaml.safe_load(f)
 
 def upload_artifact(folder_path, artifact_name, project_name, artifact_type="dataset", job_type="upload-dataset"):
     run = wandb.init(project=project_name, job_type=job_type, name=artifact_name)

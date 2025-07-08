@@ -3,11 +3,14 @@ import re
 import time
 import logging
 import requests
+import yaml
 
 from PIL import Image
 from io import BytesIO
-from utils.common import load_config
 
+def load_config():
+    with open("config/config.yaml", "r") as f:
+        return yaml.safe_load(f)
 
 def setup_logger(level="INFO"):
     logging.basicConfig(

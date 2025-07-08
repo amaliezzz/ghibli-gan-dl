@@ -1,10 +1,10 @@
-name: Scrape and Upload Dataset to W&B
+name: web-scraping
 
 on:
   workflow_dispatch:
 
 jobs:
-  scrape-and-upload:
+  data-ingestion:
     runs-on: ubuntu-latest
 
     steps:
