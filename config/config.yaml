@@ -6,8 +6,8 @@ wandb:
     job_type: upload-dataset
 
 scraper:
-  query: totoro ghibli
-  num_images: 1000
+  query: Totoro character isolated
+  num_images: 200
   output_dir: data
 
 logging:
