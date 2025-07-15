@@ -6,8 +6,8 @@ wandb:
     job_type: upload-dataset
 
 scraper:
-  query: ghibli
-  num_images: 5000
+  query: pinterest ghibli art
+  num_images: 1000
   output_dir: data
 
 logging:
