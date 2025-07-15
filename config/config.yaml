@@ -6,7 +6,7 @@ wandb:
     job_type: upload-dataset
 
 scraper:
-  query: pinterest ghibli art
+  query: totoro ghibli
   num_images: 1000
   output_dir: data
 
